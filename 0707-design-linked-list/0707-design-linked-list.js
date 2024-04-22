@@ -94,19 +94,20 @@ MyLinkedList.prototype.addAtIndex = function(index, val) {
  */
 MyLinkedList.prototype.deleteAtIndex = function(index) {
    if(this.head == null) return;
-   if (index == 0) {
-        this.head = this.head.next; // Fixed: Simplified deletion of head
-        return;
-    }
+
+   if(index == 0){
+    this.deleteAtHead();
+   } 
 
    let i = 0;
    let curr = this.head;
 
-   while(i < index -1  && curr.next != null){
+   while(i < index -1   && curr.next != null){
         i++;
         curr = curr.next;
    }
-    if (curr.next == null) return
+
+    if (curr.next == null) return;
    let delNode = curr.next;
 
    curr.next = delNode.next;
@@ -115,12 +116,13 @@ MyLinkedList.prototype.deleteAtIndex = function(index) {
 
 };
 
-// MyLinkedList.prototype.deleteAtIndex = function(){
-//     if(this.head == null) return;
-//     let newHead = this.head.next;
-//     this.head.next = null;
-//     this.head = newHead;
-// }
+MyLinkedList.prototype.deleteAtHead = function(){
+    if(this.head == null) return;
+    let newHead = this.head.next;
+    let nodeTobeDel = this.head;
+    nodeTobeDel.next = null;
+    this.head = newHead;
+}
 
 
 /** 
