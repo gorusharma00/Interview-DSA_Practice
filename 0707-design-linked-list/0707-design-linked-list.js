@@ -95,15 +95,18 @@ MyLinkedList.prototype.addAtIndex = function(index, val) {
 MyLinkedList.prototype.deleteAtIndex = function(index) {
    if(this.head == null) return;
 
-   if(index == 0){
-    this.deleteAtHead();
-   } 
+   if(index == 0) {
+        let delNode = this.head;
+        this.head = delNode.next;
+        delNode.next = null;
+        return;
+    }
 
    let i = 0;
    let curr = this.head;
 
-   while(i < index -1   && curr.next != null){
-        i++;
+   while(i < index -1   && curr.next != null){   // loop to stop one node earlier
+        i++; 
         curr = curr.next;
    }
 
@@ -116,13 +119,6 @@ MyLinkedList.prototype.deleteAtIndex = function(index) {
 
 };
 
-MyLinkedList.prototype.deleteAtHead = function(){
-    if(this.head == null) return;
-    let newHead = this.head.next;
-    let nodeTobeDel = this.head;
-    nodeTobeDel.next = null;
-    this.head = newHead;
-}
 
 
 /** 
