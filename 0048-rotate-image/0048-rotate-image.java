@@ -2,7 +2,7 @@ class Solution {
     public void rotate(int[][] matrix) {
         int n = matrix.length;
 
-        for(int col = 0; col < n; col++){
+        for(int col = 0; col < n; col++){ // reverse first and last column elements
            int i = 0; // first row
            int j = n- 1; // last row;
 
